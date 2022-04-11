@@ -26,5 +26,8 @@ io.on('connection', (server) => {
 
 server.listen(PORT,()=>{
   console.log(`listening on port ${PORT}`);
-  
+  const job = nodeCron.schedule("* */15 * * * *", ()=>{
+    console.log(`checking for changes in players`);
+    updatePlayersChange();
+    });
 });
